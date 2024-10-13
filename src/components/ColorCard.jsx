@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AddColorButton from "./AddColorButton";
 
 const ColorCard = ({
@@ -7,7 +7,17 @@ const ColorCard = ({
   inPalette,
   handleColorChange,
 }) => {
-  const [values, setValues] = useState(["00", "00", "00"]); // Default value for the slider
+  const [values, setValues] = useState([parseInt(color.slice(1, 3), 16),  parseInt(color.slice(3, 5), 16),  parseInt(color.slice(5, 7), 16)]); // Default value for the slider
+
+  // Use a ref to track if the color change is coming from the user input
+  const isUserInput = useRef(false);
+
+  useEffect(() => {
+    if (!isUserInput.current) {
+      setValues([parseInt(color.slice(1, 3), 16),  parseInt(color.slice(3, 5), 16),  parseInt(color.slice(5, 7), 16)]);
+    }
+    isUserInput.current = false;
+  }, [color]);
 
   const handleChange = (e) => {
     if (e.target.id === "slider1") {
@@ -18,6 +28,7 @@ const ColorCard = ({
       setValues([values[0], values[1], e.target.value]);
     }
     changeColor();
+    isUserInput.current = true;
   };
 
   const changeColor = () => {
