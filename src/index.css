@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl	font-mono	text-center	p-8 font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-mono text-center p-4 font-bold uppercase;
+  }
+}
+
+@layer components {
+  section {
+    @apply py-8;
+  }
+
+  button {
+    @apply rounded-lg font-bold my-4 mx-auto px-4 py-2 text-center;
+  }
+
+  button.colorized {
+    @apply transition-colors duration-300;
+  }
+}
