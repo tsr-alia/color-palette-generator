@@ -1,13 +1,32 @@
-<<<<<<< HEAD
-# React + Vite
+# Color Palette Generator
+Simple yet colorful Color Palette Generator made with React and Tailwind. Features include a "Generate Random Color" button, sliders to set RGB/HEX colors, Color Palette and Undo Button.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Getting Started
 
-Currently, two official plugins are available:
+### Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# color-palette-generator
-A simple color palette generator with a random function and the option to set and colors in HEX, RGB and HSL.
->>>>>>> fae9125cfcb88756ca11f7a45b85a78d7631322b
+- Node.js installed
+- npm or yarn installed
+
+### Installation
+
+1. **Clone the repository:**
+```bash
+   git clone https://github.com/tsr-alia/color-palette-generator.git
+   cd color-palette-generator
+```
+
+2. **Install dependencies:**
+- Return to the root and install all dependencies for the root, server, and client:
+```bash
+   npm run install-all
+```
+
+3. **Run the App:**
+- In the root directory, to start the app type:
+```bash
+npm run dev
+```
+
+4. **Access the App:**
+- Open your browser and navigate to [http://localhost:5173](http://localhost:5173/) to view the app
