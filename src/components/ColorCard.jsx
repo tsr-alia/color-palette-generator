@@ -32,6 +32,7 @@ const ColorCard = ({
     isUserInput.current = false;
   }, [color]);
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
 

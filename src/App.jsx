@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import ColorCard from "./components/ColorCard";
 import RandomColorButton from "./components/RandomColorButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [currentColor, setCurrentColor] = useState("#3498db");
@@ -13,6 +15,17 @@ function App() {
     // { color: "#aaa", text: "black" },
     // { color: "#ddd", text: "black" },
   ]);
+  const [prevPalette, setPrevPalette] = useState([]);
+
+  const [showUndoButton, setShowUndoButton] = useState(false);
+
+useEffect(() => {
+  if (prevPalette.length !== 0) {
+    setShowUndoButton(true); // Trigger the appearance after rendering
+  } else {
+    setShowUndoButton(false);
+  }
+}, [prevPalette.length]);
 
   // helper function to calculate brightness of currentColor
   const calculateBrightness = (hex) => {
@@ -34,22 +47,32 @@ function App() {
   };
 
   const addColorToPalette = () => {
+    setPrevPalette(palette);
     setPalette((prevPalette) => {
-      const newPalette = [{color: currentColor, text: currentTextColor}, ...prevPalette];
-      return newPalette.slice(0,5);
+      const newPalette = [
+        { color: currentColor, text: currentTextColor },
+        ...prevPalette,
+      ];
+      return newPalette.slice(0, 5);
     });
   };
 
   const deleteColorFromPalette = (item) => {
+    setPrevPalette(palette);
     setPalette((prevPalette) => {
       const newPalette = [
-        ...prevPalette.slice(0, item), 
-        ...prevPalette.slice(item+1),
+        ...prevPalette.slice(0, item),
+        ...prevPalette.slice(item + 1),
       ];
       console.log(newPalette);
       return newPalette;
     });
-  }
+  };
+
+  const undoLastChange = () => {
+    setPrevPalette([]);
+    setPalette(prevPalette); // Revert to the previous state
+  };
 
   return (
     <>
@@ -104,6 +127,22 @@ function App() {
             )}
           </section>
         </section>
+        {prevPalette.length !== 0 && (
+          <section
+          className={`fixed bottom-0 right-4 transition-appear hover:opacity-100 ${
+            showUndoButton ? 'transition-show' : ''
+          }`}
+        >
+            <button
+              onClick={undoLastChange}
+              className="big colorized"
+              style={{ color: currentTextColor, backgroundColor: currentColor }}
+            >
+              Undo last change!
+              <FontAwesomeIcon icon={faRotateLeft} />
+            </button>
+          </section>
+        )}
       </main>
     </>
   );

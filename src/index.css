@@ -49,3 +49,16 @@
     @apply transition-colors duration-300;
   }
 }
+
+
+
+.transition-appear {
+  opacity: 0;
+  transform: translateX(20px); /* start position (off the screen) */
+  transition: opacity 1s ease, transform 0.5s ease;
+}
+
+.transition-show {
+  opacity: 0.75;
+  transform: translateY(0); /* slide to its final position */
+}
