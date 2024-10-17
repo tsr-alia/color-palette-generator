@@ -38,8 +38,18 @@ function App() {
       const newPalette = [{color: currentColor, text: currentTextColor}, ...prevPalette];
       return newPalette.slice(0,5);
     });
-    console.log({ color: currentColor, text: currentTextColor });
   };
+
+  const deleteColorFromPalette = (item) => {
+    setPalette((prevPalette) => {
+      const newPalette = [
+        ...prevPalette.slice(0, item), 
+        ...prevPalette.slice(item+1),
+      ];
+      console.log(newPalette);
+      return newPalette;
+    });
+  }
 
   return (
     <>
@@ -79,11 +89,13 @@ function App() {
                 <h2 className="">My Color Palette</h2>
                 <div className="flex flex-row flex-wrap justify-center items-center gap-4 w-full">
                   {palette.map((color, index) => (
-                    <div key={index} className="basis-28 md:basis-56">
+                    <div key={index} className="basis-28 sm:basis-56">
                       <ColorCard
                         color={color.color}
                         textColor={color.text}
+                        deleteColorFromPalette={deleteColorFromPalette}
                         inPalette={true}
+                        item={index}
                       />
                     </div>
                   ))}

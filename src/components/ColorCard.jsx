@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import AddColorButton from "./AddColorButton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const ColorCard = ({
   color,
   textColor,
   addColorToPalette,
+  deleteColorFromPalette,
+  item,
   inPalette,
   handleColorChange,
 }) => {
@@ -19,11 +23,6 @@ const ColorCard = ({
 
   useEffect(() => {
     if (!isUserInput.current) {
-      console.log([
-        parseInt(color.slice(1, 3), 16),
-        parseInt(color.slice(3, 5), 16),
-        parseInt(color.slice(5, 7), 16),
-      ]);
       setRgbValues({
         r: parseInt(color.slice(1, 3), 16),
         g: parseInt(color.slice(3, 5), 16),
@@ -57,7 +56,6 @@ const ColorCard = ({
     handleColorChange(newColor);
   };
 
-  console.log(color);
   return (
     <>
       <style jsx>{`
@@ -144,6 +142,9 @@ const ColorCard = ({
                 }}
               />
             </div>
+          )}
+          {inPalette && (
+            <button className="relative left-2 top-2 " onClick={() => deleteColorFromPalette(item)}><FontAwesomeIcon icon={faX} /></button>
           )}
         </div>
         <div className="p-4">
