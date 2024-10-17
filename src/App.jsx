@@ -57,9 +57,9 @@ function App() {
           <div style={{ color: currentColor }}>Color</div>
           Palette Generator
         </h1>
-       <section className="flex flex-row flex-wrap">
-       <section className="w-full md:w-1/3 flex flex-col pb-8">       
-          <div className="md:w-64 w-full">
+       <section className="flex flex-row flex-wrap gap-8">
+       <section className="w-full md:w-[calc(33.33%-16px)] flex flex-col gap-4">       
+          <div className="md:w-56 w-full">
             <RandomColorButton
               handleColorChange={handleColorChange}
               color={currentColor}
@@ -75,20 +75,19 @@ function App() {
           </div>
         </section>
        
-        <section className="w-full md:w-2/3 flex flex-col items-center justify-center">
+        <section className="w-full md:w-[calc(66.66%-16px)] flex flex-col items-center justify-center">
           <h2 className="">My Color Palette</h2>
-          <div className="flex flex-row flex-wrap justify-center items-center gap-8">
+          <div className="flex flex-row flex-wrap justify-center items-center gap-4 w-full">
             
-            {/* {palette.map((color, index) => (
-              <div key={index} className="w-full md:w-1/2 lg:w-1/3">
+            {palette.map((color, index) => (
+               <div key={index} className="basis-28 md:basis-56">
               <ColorCard
-                
                 color={color.color}
                 textColor={color.text}
                 inPalette={true}
               />
               </div>
-            ))} */}
+            ))}
             </div>
       
         </section>
