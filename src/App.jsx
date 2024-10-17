@@ -51,14 +51,15 @@ function App() {
           "--text-color": currentTextColor,
           backgroundImage: "linear-gradient(to top, var(--color), #fff)",
         }}
-        className="min-h-screen"
+        className="min-h-screen "
       >
         <h1>
-          <span style={{ color: currentColor }}>Colorful</span> Color Palette
-          Generator
+          <div style={{ color: currentColor }}>Color</div>
+          Palette Generator
         </h1>
-        <section className="flex flex-col items-center justify-center">
-          <div className="sm:w-72 w-full px-4 mx-auto">
+       <section className="flex flex-row flex-wrap">
+       <section className="w-full md:w-1/3 flex flex-col pb-8">       
+          <div className="md:w-64 w-full">
             <RandomColorButton
               handleColorChange={handleColorChange}
               color={currentColor}
@@ -67,24 +68,30 @@ function App() {
             <ColorCard
               color={currentColor}
               textColor={currentTextColor}
+              inPalette={false}
               addColorToPalette={addColorToPalette}
               handleColorChange={handleColorChange}
             />
           </div>
         </section>
-
-        <section className="flex flex-col items-center justify-center">
+       
+        <section className="w-full md:w-2/3 flex flex-col items-center justify-center">
           <h2 className="">My Color Palette</h2>
-          <div className="flex flex-row justify-center items-center gap-x-8 p-8">
-            {palette.map((color, index) => (
+          <div className="flex flex-row flex-wrap justify-center items-center gap-8">
+            
+            {/* {palette.map((color, index) => (
+              <div key={index} className="w-full md:w-1/2 lg:w-1/3">
               <ColorCard
-                key={index}
+                
                 color={color.color}
                 textColor={color.text}
                 inPalette={true}
               />
-            ))}
-          </div>
+              </div>
+            ))} */}
+            </div>
+      
+        </section>
         </section>
       </main>
     </>

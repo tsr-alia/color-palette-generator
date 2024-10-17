@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RandomColorButton = ({handleColorChange, currentColor, currentTextColor}) => {
+const RandomColorButton = ({handleColorChange}) => {
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
         let color = '#';
@@ -21,7 +21,7 @@ const RandomColorButton = ({handleColorChange, currentColor, currentTextColor}) 
 
     return (
     <button onClick={setRandomColor} style={{ backgroundColor: "var(--color)", color: "var(--text-color)" }}
-    className="colorized w-full">Create a Random Color!</button>
+    className="colorized big w-full">Create a Random Color!</button>
     );
 }
 

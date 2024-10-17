@@ -4,21 +4,39 @@
 
 @layer base {
   h1 {
-    @apply text-4xl	font-mono	text-center	p-8 font-bold;
+    @apply text-4xl	font-mono	font-bold pb-8;
   }
 
   h2 {
-    @apply text-2xl font-mono text-center p-4 font-bold uppercase;
+    @apply text-2xl font-mono pb-6 font-bold uppercase;
+  }
+
+  h3 {
+    @apply text-base;
+  }
+
+  label {
+    @apply text-base;
   }
 }
 
 @layer components {
-  section {
-    @apply py-8;
+
+  main {
+
+    @apply p-4;
   }
 
-  button {
-    @apply rounded-lg font-bold my-4 mx-auto px-4 py-2 text-center;
+  section {
+    /* @apply py-8; */
+  }
+
+  button.big {
+    @apply rounded-lg font-bold mb-4 mx-auto px-4 py-2 text-center;
+  }
+
+  button.small {
+    /* @apply rounded-full */
   }
 
   button.colorized {
